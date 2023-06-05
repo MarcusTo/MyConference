@@ -1,8 +1,8 @@
 namespace MyConference.Pages;
 
-public partial class ContentPage : ContentView
+public partial class SchedulePage : ContentView
 {
-	public ContentPage()
+	public SchedulePage()
 	{
 		InitializeComponent();
 	}
