@@ -5,7 +5,7 @@ public partial class SchedulePage : ContentPage
 {
     readonly ScheduleViewModel vm;
     public static int day { get; set; }
-    public  int Day { get; set; }
+    public int Day { get; set; }
     public SchedulePage(ScheduleViewModel vm)
     {
         InitializeComponent();

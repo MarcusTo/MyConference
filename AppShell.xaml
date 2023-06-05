@@ -15,7 +15,7 @@
             <ShellContent
                 Title="Day 2"
                 ContentTemplate="{DataTemplate local:SchedulePage}"
-                Route="ScheduleDay2" />
+                Route="ScheduleDay2"/>
         </Tab>
         <Tab Title="My Agenda"  Icon="tab_agenda.png">
             <ShellContent
