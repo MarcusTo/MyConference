@@ -3,16 +3,15 @@ using MvvmHelpers;
 using MyConference.Models;
 using Jeffsum;
 using static Jeffsum.Goldblum;
-using UIKit;
+
 
 namespace MyConference.ViewModels;
-
-public partial class AgendaViewModel : ObservableObject
+public partial class ScheduleViewModel : ObservableObject
 {
     public int Day { get; set; }
-    public ObservableRangeCollection<Grouping<string, Session>> Agenda { get; } = new();
+    public ObservableRangeCollection<Grouping<string, Session>> Schedule { get; } = new();
     Random random = new();
-    public AgendaViewModel()
+    public ScheduleViewModel()
     {
 
     }
@@ -22,19 +21,14 @@ public partial class AgendaViewModel : ObservableObject
         var sessioncount = new[] { 1, 2, 4, 4, 4, 4, 4, };
         var sessions = new List<Session>();
         var start = new DateTime(2022, 9, Day, 8, 30, 0);
-
         for (int i = 0; i < sessioncount.Length; i++)
             AddItems(sessioncount[i], i);
-
         var sorted = from session in sessions
                      orderby session.Start
                      group session by session.StartTimeDisplay into sessionGroup
                      select new Grouping<string, Session>(sessionGroup.Key, sessionGroup);
-
-        Agenda.AddRange(sorted);
-
+        Schedule.AddRange(sorted);
         return Task.CompletedTask;
-
         void AddItems(int count, int offset)
         {
             for (int i = 0; i < count; i++)
@@ -47,7 +41,22 @@ public partial class AgendaViewModel : ObservableObject
                     Start = start.AddHours(offset),
                     End = start.AddHours(offset + 1)
                 });
-
             }
         }
     }
+}
+
+public class ScheduleDay1ViewModel : ScheduleViewModel
+{
+    public ScheduleDay1ViewModel()
+    {
+        Day = 1;
+    }
+}
+public class ScheduleDay2ViewModel : ScheduleViewModel
+{
+    public ScheduleDay2ViewModel()
+    {
+        Day = 2;
+    }
+}
