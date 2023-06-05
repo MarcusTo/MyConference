@@ -18,11 +18,11 @@ public partial class ScheduleViewModel : ObservableObject
     [RelayCommand]
     Task LoadDataAsync()
     {
-        var sessioncount = new[] { 1, 2, 4, 4, 4, 4, 4, };
+        var sessionCount = new[] { 1, 2, 4, 4, 4, 4, 4, };
         var sessions = new List<Session>();
         var start = new DateTime(2022, 9, Day, 8, 30, 0);
-        for (int i = 0; i < sessioncount.Length; i++)
-            AddItems(sessioncount[i], i);
+        for (int i = 0; i < sessionCount.Length; i++)
+            AddItems(sessionCount[i], i);
         var sorted = from session in sessions
                      orderby session.Start
                      group session by session.StartTimeDisplay into sessionGroup
